@@ -40,7 +40,7 @@ train_datagen = ImageDataGenerator(
 # In[7]:
 
 
-test_datagen = ImageDataGenerator(rescale=1./255)  # No augmentation for test
+test_datagen = ImageDataGenerator(rescale=1./255)  
 
 train_generator = train_datagen.flow_from_directory(
     train_dir,
