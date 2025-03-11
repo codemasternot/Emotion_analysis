@@ -28,14 +28,14 @@ emotion_labels = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surpri
 
 # Load OpenCV face detector
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-cap = cv2.VideoCapture(0)  # Use 0 for default webcam
+cap = cv2.VideoCapture(0)  
 
 
 # In[19]:
 
 
 while True:
-    ret, frame = cap.read()  # Capture frame-by-frame
+    ret, frame = cap.read()  
     if not ret:
         break
 
@@ -45,9 +45,9 @@ while True:
     for (x, y, w, h) in faces:
         roi_gray = gray[y:y+h, x:x+w]
         roi_gray = cv2.resize(roi_gray, (48, 48))  # Resize to model input size
-        roi_gray = roi_gray.astype("float") / 255.0  # Normalize
+        roi_gray = roi_gray.astype("float") / 255.0  
         roi_gray = img_to_array(roi_gray)
-        roi_gray = np.expand_dims(roi_gray, axis=0)  # Add batch dimension
+        roi_gray = np.expand_dims(roi_gray, axis=0) 
 
         # Predict emotion
         preds = model.predict(roi_gray)[0]
